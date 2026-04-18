@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       env:
-        description: "Environment to run tests"
+        description: "Environment"
         required: true
         default: demo
         type: choice
@@ -29,9 +29,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --project=chromium
         env:
-          ENV_NAME: ${{ github.event.inputs.env }}
+          ENV_NAME: ${{ github.event.inputs.env || 'demo' }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           APP_USERNAME: ${{ secrets.APP_USERNAME }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
