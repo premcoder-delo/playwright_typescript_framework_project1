@@ -33,8 +33,6 @@ jobs:
         env:
           ENV_NAME: ${{ github.event.inputs.env || 'demo' }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          APP_USERNAME: ${{ secrets.APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
