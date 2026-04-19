@@ -1,0 +1,40 @@
+{
+  "content_type": "application/json",
+  "deleted_content_type": "text/plain; charset=utf-8",
+  "first_name": "Mark",
+  "last_name": "Jones",
+  "Total_price": 887,
+  "create_booking_payload": {
+    "firstname": "pk",
+    "lastname": "san",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2018-01-01",
+      "checkout": "2019-01-01"
+    },
+    "additionalneeds": "Breakfast"
+  },
+  "update_booking_payload": {
+    "firstname": "pk_Updated",
+    "lastname": "san_Updated",
+    "totalprice": 119,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-04-01",
+      "checkout": "2016-04-01"
+    },
+    "additionalneeds": "Lunch"
+  },
+  "partial_update_booking_payload": {
+    "firstname": "pk_Partial_Updated",
+    "lastname": "san_Partial_Updated",
+    "totalprice": 119,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-04-01",
+      "checkout": "2016-04-01"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

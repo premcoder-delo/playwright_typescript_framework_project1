@@ -1,5 +1,5 @@
-import { test, expect } from '../fixtures/hooks-fixture'
-import loginModuleData from '../data/login-module-data.json'
+import { test, expect } from '../../fixtures/hooks-fixture'
+import loginModuleData from '../../data/ui-data/login-module-data.json'
 
 /**
  * Here this block of code says that don't use saved credentials to auto login.
