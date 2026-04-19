@@ -1,4 +1,5 @@
 name: Playwright Tests
+
 on:
   workflow_dispatch:
     inputs:
@@ -11,28 +12,57 @@ on:
           - demo
           - qa
           - trunk
+
+      test_script:
+        description: "Select test script"
+        required: true
+        type: choice
+        options:
+          - test_demo
+          - test_qa
+          - test_trunk
+          - test_demo_cr_hd
+          - test_demo_fr_hd
+          - test_demo_cr
+          - test_demo_fr
+          - test_demo_cr_ui
+          - test_demo_ui
+          - test_uat_cr
+          - test_demo_cr_hd_vi
+          - test_demo_cr_hd_lf
+          - test_demo_api
+          - test_demo_ui_cr_hd_api
+
   push:
     branches: [main, master]
+
   pull_request:
     branches: [main, master]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
       - name: Install dependencies
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test --project=chromium --project=apiTest
+
+      - name: Run selected Playwright tests
+        run: npm run ${{ github.event.inputs.test_script }}
         env:
           ENV_NAME: ${{ github.event.inputs.env || 'demo' }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
