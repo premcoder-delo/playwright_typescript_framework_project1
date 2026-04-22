@@ -46,7 +46,7 @@ export default defineConfig({
   projects: [
     {
       name: 'setup',
-      testMatch: 'tests/global.setup.ts'
+      testMatch: 'tests/ui-tests/global.setup.ts'
     },
     {
       name: 'chromium',
